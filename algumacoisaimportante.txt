@@ -1,0 +1,71 @@
+		$(document).ready(function(){
+      		//ELEMENTOS QUE INICIAM OCULTOS
+      		$('#calc').hide();
+      		$('#menucalc').hide();
+      		$('#entredn').hide();
+    		$('#entre2dn').hide();
+    		$('#entredu').hide();
+    		$('#entre2du').hide();
+			$('#correla').hide();
+
+
+
+		$('#btn1').click( function(){
+    			$('#ed').fadeIn();
+    			$('#calc').hide();
+    			$('#menucalc').hide();
+				$('#correla').hide();
+    		})
+    		//clone botao menu estatistica descritiva
+    		$('#btn1m').click( function(){
+    			$('#ed').fadeIn();
+    			$('#calc').hide();
+    			$('#menucalc').hide();
+				$('#correla').hide();
+    		})
+    		//mostrar div calculadora estatistica
+    		$('#btn2').click( function(){
+    			$('#calc').fadeIn();
+    			$('#menucalc').show();
+    			$('#ed').hide();
+				$('#correla').hide();
+    		})
+    		//clone botao menu
+    		$('#btn2m').click( function(){
+    			$('#calc').fadeIn();
+    			$('#menucalc').show();
+    			$('#ed').hide();
+				$('#correla').hide();
+    		})
+    		//mostrar div correlação
+    		$('#btn3').click( function(){
+    			$('#ed').hide();
+    			$('#calc').hide();
+    			$('#menucalc').hide();
+				$('#correla').fadeIn();
+    		})
+    		//clone botao menu
+    		$('#btn3m').click( function(){
+    			$('#calc').hide();
+    			$('#menucalc').hide();
+    			$('#ed').hide();
+				$('#correla').fadeIn();
+			})
+    		//botão menu distribuição normal
+    		$('#btn4m').click( function(){
+    			$('#dn').fadeIn();
+    			$('#db').hide();
+    			$('#du').hide();
+    		})
+    		//botão menu distribuição binomial
+    		$('#btn5m').click( function(){
+    			$('#db').fadeIn();
+    			$('#dn').hide();
+    			$('#du').hide();
+    		})
+    		//botão menu distribuição uniforme
+    		$('#btn6m').click( function(){
+    			$('#du').fadeIn();
+    			$('#db').hide();
+    			$('#dn').hide();
+    		})

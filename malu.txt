@@ -1,0 +1,8 @@
+binomial
+menor que e maior que usando números em sequencia
+
+normal
+menor entre e Maior que
+
+Uniforme
+falta entre

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <!-- Icon Font-->
+      <link rel="stylesheet" type="text/css" href="css/materialicons.css">
+      <!-- Materialize CSS -->
+      <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+      <!-- Normalize CSS -->
+      <link rel="stylesheet" type="text/css" href="normalize.css">
+      <!-- CSS Página -->
+      <link rel="stylesheet" type="text/css" href="mudar.css">
+      <!-- Otimizar Mobile -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+      <!-- ======================================== HEADER PÁGINA ============================== -->
+      <header>
+        <div class="navbar-fixed ">
+          <nav class="black" role="navigation">
+            <div class="nav-wrapper black">
+              <a href="index.html" class="brand-logo">Home<i class="material-icons">home</i></a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="#">Estatística Descritiva</a></li>
+                <li><a id="efeitoNormal" href="#scrollnormal" >Distribuição Normal</a></li>
+                <li><a id="efeitoBinomial" href="#scrollbinomial">Distribuição Binomial</a></li>
+                <li><a id="efeitoUniforme" href="#scrolluniforme">Distribuição Uniforme</a></li>
+                <li><a id="efeitoCorrelacao" href="#scrollcorrela">Correlação/Regressão</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#">Estatística Descritiva</a></li>
+            <li><a id="efeitoNormal" href="#scrollnormal">Distribuição Normal</a></li>
+            <li><a id="efeitoBinomial" href="#scrollbinomial">Distribuição Binomial</a></li>
+            <li><a id="efeitoUniforme" href="#scrolluniforme">Distribuição Uniforme</a></li>
+            <li><a id="efeitoCorrelacao" href="#scrollcorrela">Correlação/Regressão</a></li>
+        </ul>
+        </div>
+        <br>
+      </header>
+      <!-- ========================================== FIM HEADER ================================ -->
+
+        <!-- ======================================== SECTION PÁGINA ============================== -->
+      <section style="border:3px solid white;">
+        <div class="container" style="border: 2px solid white; padding: 30px; background-color: white">
+          <div class="row" id = "">
+            <h4>Entrada de Dados</h4><br>
+            <form class="col s6">
+                  Qual o Tipo de Dado:
+              <div class="container-fluid input-field col s12">
+                <br>
+                <label>
+                  <input class="with-gap" id="amostra" name="tipoDado" type="radio" value="1" checked/>
+                  <span>Amostra</span>
+                </label>
+              </div>
+              <div class="input-field col s6">
+                <label>
+                  <input class="with-gap" id="populacao" name="tipoDado" type="radio" value="2"/>
+                  <span>População</span>
+                </label>
+              </div>
+            </form>
+          </div>
+          <br>
+          <div class="row">
+            <div class="input-field col s12 ">
+              <input id="nome" type="text">
+              <label for="nome">Qual Nome da Variável Pesquisada?</label>
+            </div>
+            <div id="CSVsaida"class=" file-field input-field col s12 l12">
+              <input type="file" id="inputCSV" style="border-bottom: none;" >
+                <i class="material-icons prefix">cloud_upload</i><a href=""></a>
+              <input type = "file" onchange="pegaCSV(this)"/>
+                <input id="CSVsaida2" type="text">
+                <label for="CSVsaida2">Informe os Dados:</label>
+            </div>
+          </div>
+            <div class="row">
+            	<div class="input-field col s12 l6">
+    	            <select id="tipocalc">
+    	              <option value="nada" disabled selected>Selecione...</option>
+    	              <option value="Qualitativa Nominal">Qualitativa Nominal</option>
+    	              <option value="Qualitativa Ordinal">Qualitativa Ordinal</option>
+    	              <option value="Quantitativa Conti­nua">Quantitativa Contínua</option>
+    	              <option value="Quantitativa Discreta">Quantitativa Discreta</option>
+    	            </select>
+                  <label style="font-size: 15px;">Qual o Tipo da Variável?</label>
+              </div>  
+                    <div class="row" id="ocultaord">
+                        <div class="input-field col s12 l6 ">
+                          <input id="vetord" type="text">
+                          <label for="vetord">Informe a ordenação: Ex:(MB;B;R;MR)</label>
+                        </div>
+                    </div>
+            </div>
+            <div class="row" id="showtest">
+                <div class="input-field col s12 l6 ">
+                  <input id="percenter" type="text">
+                  <label for="percenter">Digite até 10 posições para porcentil</label>
+                </div>
+            </div>
+            <br><br><br>
+          <!-- ======================== BOTÃO GERAR RESULTADOS ============================= -->
+            <div class="container center-align">
+              <div class="row">
+                <button onclick="getRandomIntInclusive()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="tabel" id="btnCal">CALCULAR</button> 
+              </div>
+           </div>
+  	    </div>
+        <!-- ============================== CARDS PÁGINA ================================= -->
+        <!--- =============================== GERAR TABELA ================================ -->
+        <div class="row container" id="tabel">
+            <div class ="row">
+                <h4 class="center-align">Medidas de Tendência Central</h4><br>
+              </div>
+          <div class="col s12 l4">
+            <div class="card-panel center-align indigo darken-1">
+                <h5><span class="white-text">Média</span></h5>
+              <h6><output type="text" class="white-text" id="x" >Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l4">
+            <div class="card-panel center-align blue darken-2">
+                <h5><span class="white-text">Moda</span></h5>
+              <h6><output type="text" class="white-text" id="mo" >Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l4">
+            <div class="card-panel center-align indigo darken-1">
+                <h5><span class="white-text">Mediana</span></h5>
+              <h6><output type="text" class="white-text" id="md" >Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l6">
+            <div class="card-panel center-align orange accent-3">
+                <h5><span class="black-text">Desvio Padrão</span></h5>
+              <h6><output type="number" class="black-text" id="dp">Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l6">
+            <div class="card-panel center-align amber">
+                <h5><span class="black-text">Coeficiente de variação</span></h5>
+              <h6><output type="text" class="black-text" id="cov" >Resultado</output></h6>
+            </div>
+          </div>
+          <div class= "col s12">
+              <h4 class="center-align">Tabela</h4><br>
+               <h6 id="saida"></h6>  
+          </div>
+            <div>
+            </div>
+          <!--- =============================== FIM TABELA================================= -->
+
+          <!--- ============================= MEDIDAS SEPARATRIZ ============================= --> 
+          <div class="row">
+              <h4 class="center-align">Medida Separatriz</h4> 
+            <div class="col s12 l6">
+              <div class="card-panel center-align indigo darken-1">
+                <h5><span class="white-text">Quartil</span></h5>
+                <h6><output type="text" class="white-text" id="q" >Resultado</output></h6>
+              </div>
+            </div>
+            <div class="col s12 l6">
+              <div class="card-panel center-align blue darken-2">
+                  <h5><span class="white-text">Kintil</span></h5>
+                  <h6><output type="text" class="white-text" id="k" >Resultado</output></h6>
+              </div>
+            </div>
+            <div class="col s12 l12">
+              <div class="card-panel center-align orange accent-3">
+                <h5><span class="black-text">Decil</span></h5>
+                <h6><output type="text" id="decil" class="black-text" >Resultado</output></h6>
+              </div>
+            </div>
+            <div class="col s12 l12">
+              <div class="card-panel center-align amber">
+                  <h5><span class="black-text">Percentil</span></h5>
+                <h6><output type="text" id="porcentil" class="black-text" >Resultado</output></h6>
+              </div>
+            </div>
+            <div>
+              <canvas id="myChart" height="268" class="chartjs-render-monitor" width="536" style="display: block; width: 536px; height: 268px;"></canvas>
+            </div>
+          </div>    
+        </div>    
+        <!-- =========================== DISTRIBUÍÇÃO NORMAL =========================== -->
+        <a name="scrollnormal" ></a>
+        <div style="height: 100px;" id="espnorm"></div>
+        <section class="scrollspy" id="distNormal">
+          <div class="container " style="border: white 2px solid">
+            <h4 class="center">Distribuíção Normal</h4>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="medianorm" type="number" class="validate" placeholder="">
+                    <label for="medianorm">Média</label>
+                  </div>
+                  <div class="input-field col s6 l6">
+                    <input id="desvionorm" type="number" class="validate" placeholder="">
+                    <label for="desvionorm">Desvio Padrão</label>
+                  </div>
+                  <div class="input-field col s12 l6">
+                    <input id="normx" type="number" class="validate" placeholder="">
+                    <label for="normx">Valor X</label>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6 l6">
+                        <select id="calcnormal">
+                            <option value="nada" disabled selected>Selecione...</option>
+                            <option value="Maior que">Maior que</option>
+                            <option value="Menor que">Menor que</option>
+                            <option value="Entre">Entre</option>  
+                      </select>
+
+                        <label style="font-size: 15px;">Selecione a opção</label>
+                    </div>  
+                    <div class="row" id="oculnorm">
+                        <div class="input-field col s6 l6 ">
+                            <input id="normy" type="text">
+                            <label for="normy">Valor y</label>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row center">
+                  <button onclick="distribuicaonormal()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="tabe">CALCULAR</button>
+                </div>
+          </div>
+          <div class = "container">
+            <div class = "container">
+              <div class="row container" id="tabe">
+                <div class="col s12 l12">
+                  <div class="card-panel center-align indigo darken-1">
+                    <h5><span class="white-text">Probabilidade</span></h5>
+                    <h6><output type="text" id="pronorm" class="white-text" >Resultado</output></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+        <!-- =========================== DISTRIBUÍÇÃO BINOMINAL ========================== -->
+        <a name="scrollbinomial"></a>
+        <div style="height: 50px;" id="espbin"></div>
+        <section id="distBinominal">
+          <div class="container" style="border: white 2px solid">
+            <h4 class="center">Distribuíção Binominal</h4>
+            <div class="row">
+              <div class="input-field col s6 l6">
+                <input id="txttamanho" type="number" >
+                <label for="txttamanho">Tamanho Amostra</label>
+              </div>
+              <div class="input-field col s6 l6">
+                <input id="txtsucesso" type="number" >
+                <label for="txtsucesso">Sucesso</label>
+              </div>
+              <div class="input-field col s12 l6">
+                <input id="txtfracasso" type="number">
+                <label for="txtfracasso">Fracasso</label>
+              </div>
+              <div class="input-field col s12 l6">
+                <input id="txtelemento" type="number">
+                <label for="txtelemento">elemento</label>
+              </div>
+            <div class="row center">
+              <button id="btncalcbin" onclick="ditribuicaobinomial()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="distbino">CALCULAR</button>
+            </div>
+          </div>
+          <div class="row container" id="distbino">
+            <div class="col s12 l6">
+              <div class="card-panel center-align indigo darken-1">
+                <h5><span class="white-text" >Média</span></h5>
+                <h6><output type="text"class="white-text" id="mediabino" >Resultado</output></h6>
+              </div>
+            </div>
+            <div class="col s12 l6">
+              <div class="card-panel center-align orange accent-3">
+                <h5><span class="black-text">Desvio Padrão</span></h5>
+                <h6><output type="text" id="desvio" class="black-text" >Resultado</output></h6>
+              </div>
+            </div>
+            <div class="col s12 l6">
+              <div class="card-panel center-align blue darken-2">
+                <h5><span class="white-text">Coeficiente de variação</span></h5>
+                <h6><output type="text"class="white-text" id="cdv" >Resultado</output></h6>
+              </div>
+            </div>
+          <div class="col s12 l6">
+            <div class="card-panel center-align amber">
+              <h5><span class="black-text">Probabilidade</span></h5>
+              <h6><output type="text" id="prob" class="black-text">Resultado</output></h6>
+            </div>
+          </div>
+          <div class= "col s12" id="tabbin">
+              <h4 class="center-align">Tabela</h4><br>
+               <h6 id="exibetab"></h6>  
+            </div>
+          </div>
+        </section>
+        
+
+        <!-- =========================== DISTRIBUÍÇÃO UNIFORME ============================ -->
+        <a name="scrolluniforme" ></a>
+        <div style="height: 100px;" id="espuni"></div>
+        <section id="distUniforme">
+          <div class="container"  style="border: white 2px solid">
+           <h4 class="center">Distribuíção Uniforme</h4>
+              <div class="row">
+                <div class="input-field col s6 l6">
+                  <input id="valorx" type="number" class="validate">
+                  <label for="valorx">Intervalo Inicial</label>
+                </div>
+                <div class="input-field col s6 l6">
+                  <input id="valory" type="number" class="validate">
+                  <label for="valory">Intervalo Final</label>
+                </div>
+                <div class="input-field col s12 l6">
+                  <input id="unix" type="number" class="validate" placeholder="">
+                  <label for="unix">Valor X</label>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6 l6">
+                      <select id="calcuni">
+                          <option value="nada" disabled selected>Selecione...</option>
+                          <option value="Maior que">Maior que</option>
+                          <option value="Menor que">Menor que</option>
+                          <option value="Entreu">Entre</option>  
+                    </select>
+
+                      <label style="font-size: 15px;">Selecione a opção</label>
+                  </div>  
+                  <div class="row" id="oculuni">
+                      <div class="input-field col s6 l6 ">
+                          <input id="uniy" type="text">
+                          <label for="uniy">Valor y</label>
+                      </div>
+                  </div>
+                </div>
+          </div>
+              </div>
+              <div class="row center">
+                <button onclick="distribuicaouniforme()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="tabeel">CALCULAR</button>
+              </div>
+          </div>
+        <div class="row container" id="tabeel">
+            <div class="col s12 l6">
+              <div class="card-panel center-align indigo darken-1">
+                <h5><span class="white-text">Média</span></h5>
+                <h6><output type="text" id="mediauni" class="white-text">Resultado</output></h6>
+              </div>
+            </div>
+          <div class="col s12 l6">
+            <div class="card-panel center-align orange accent-3">
+              <h5><span class="black-text">Desvio Padrão</span></h5>
+              <h6><output type="text" id="desviouni" class="black-text">Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l6">
+            <div class="card-panel center-align blue darken-2">
+              <h5><span class="white-text">Coeficiente de variação</span></h5>
+              <h6><output type="text" id="cdvuni" class="white-text">Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l6">
+            <div class="card-panel center-align amber">
+              <h5><span class="black-text">Probabilidade</span></h5>
+              <h6><output type="text" id="prouni" class="black-text">Resultado</output></h6>
+            </div>
+          </div>
+          <div class= "col s12">
+            <h6 id="#"></h6>  
+          </div>
+        </div>
+        </section>
+        
+        <!-- =========================== CORRELAÇÃO E REGRESSÃO =========================== -->
+        <a name="scrollcorrela" ></a>
+        <div style="height: 150px;" id="espcorre"></div>
+        <section id="correlacao">
+          <div class="container"  style="border:white 2px solid">
+           <h4 class="center">Correlação/Regressão</h4>
+              <div class="row">
+                <div class="input-field col s6 l6">
+                  <input id="nomex" type="text" class="validate">
+                  <label for="nomex">Informe o Nome da Varável Independente (X)</label>
+                </div>
+                <div class="input-field col s6 l6">
+                  <input id="nomey" type="text" class="validate">
+                  <label for="nomey">Informe o Nome da Varável Dependente (Y)</label>
+                </div>
+                <div class="input-field col s12 l6">
+                  <input id="txtdadosx" type="text" class="validate">
+                  <label for="txtdadosx">Histórico da Varável Independente (X) </label>
+                </div>
+                <div class="input-field col s12 l6">
+                  <input id="txtdadosy" type="text" class="validate">
+                  <label for="txtdadosy">Histórico da Varável Independente (Y)</label>
+                </div>
+              </div>
+              <div class="row center">
+                <button onclick="correlacaoregrecao()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="tabel2">CALCULAR</button>
+                <h5 id="vvetorID1"></h5>
+              </div>
+          </div>
+        <div class="row container" id="tabel2">
+          <div class="col s12 l4">
+            <div class="card-panel center-align indigo darken-1">
+              <h5><span class="white-text" >Nível Correlação</span></h5>
+              <h6><output type="text" id="força" class="white-text" >Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l4">
+            <div class="card-panel center-align orange accent-3">
+              <h5><span class="black-text">Coeficiente Correlação</span></h5>
+              <h6><output type="text" id="corelaline" class="black-text">Resultado</output></h6>
+            </div>
+          </div>
+          <div class="col s12 l4">
+            <div class="card-panel center-align blue darken-2">
+              <h5><span class="white-text">Equação da Reta</span></h5>
+              <h6><output type="text" id="equac" class="white-text" >Resultado</output></h6>
+            </div>
+          </div>
+          
+          <div class= "col s12">
+            <h6 id="#"></h6>  
+          </div>
+        </div>
+        <div class="row container">
+          <div class="col s12">
+              <canvas id="myChartcorrela" height="268" class="chartjs-render-monitor" width="536" style="display: block; width: 536px; height: 268px;"></canvas>               
+          </div>
+        </div>
+        </section>
+
+        <!-- ============================== GERAR GRÁFICO ================================-->
+        
+          <!-- ============================== FIM GRÁFICO ================================-->
+      </section>
+      <!-- ========================================  FIM SECTION ================================= -->
+
+      <!-- ======================================== FOOTER ======================================= -->
+      <footer class="page-footer black">
+        <div class="footer-copyright">
+          <div class="container">
+            <p class="text center">Ana Paula Santos | Júilo Manochio | Fernanda Andrade | Júlio Rodrigues | Lucas Malta</p>
+            <p class="text center">FATEC FRANCA - 3° SEMESTRE</p>
+          </div>
+        </div>
+      </footer>
+      <!-- ======================================== FIM FOOTER =================================== -->
+
+      <!-- ======================== JQUERY ==================== -->
+      <script src="js/jquery.min.js"></script>
+      <!-- =============== JAVASCRIPT MATERIALIZE ============= -->
+      <script src="js/materialize.min.js"></script>
+      <!-- ================= JAVASCRIPT PÁGINA ================ -->
+      <script src="slide.js"></script>
+      <script src="Estatistica3.js"></script> 
+            <!--Gráfico-->
+      <script src="js/Chart.min.js"></script>
+      <script>
+        $(document).ready(function() {
+        $('#ocultaord').hide();
+        $('#tipocalc').change(function() {
+          if ($('#tipocalc').val() == 'Qualitativa Ordinal') {
+            $('#ocultaord').show();
+          } else {
+            $('#ocultaord').hide();
+          }
+        });
+        });
+     $(document).ready(function() {
+         $('#oculnorm').hide();
+         $('#calcnormal').change(function() {
+             if ($('#calcnormal').val() == 'Entre') {
+                 $('#oculnorm').show();
+             } else {
+                 $('#oculnorm').hide();
+             }
+         });
+     });
+     $(document).ready(function () {
+         $('#oculuni').hide();
+         $('#calcuni').change(function () {
+             if ($('#calcuni').val() == 'Entreu') {
+                 $('#oculuni').show();
+             } else {
+                 $('#oculuni').hide();
+             }
+         });
+     });
+                  var leitorDeCSV = new FileReader()
+            window.onload = function init() {
+                leitorDeCSV.onload = leCSV;
+             }
+
+             function pegaCSV(inputFile) {
+                var file = inputFile.files[0];
+                leitorDeCSV.readAsText(file);
+            }
+            function leCSV(evt) {
+
+            var fileArr = evt.target.result.split('\n');
+            var strDiv = '';
+
+            for (var i=0; i<fileArr.length; i++) {
+                var fileLine = fileArr[i].split(',');
+                    for (var j=0; j<fileLine.length; j++) {
+                        strDiv += ''+fileLine[j].trim()+';';
+                }
+            }
+
+                var CSVsaida = document.getElementById('CSVsaida2');
+                CSVsaida.value = strDiv;
+                console.log(strDiv);
+}
+      </script>
+    </body>
+  </html>

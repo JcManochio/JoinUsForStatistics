@@ -1,0 +1,53 @@
+
+/* ============ LOGIN CSS ==========*/
+body{
+	background: url(img/abst1.jpg);
+	background-size: cover;
+	color: #fff;
+}
+.login{
+	margin-top: 80px;
+}
+.login .card{
+	background: rgba(0, 0, 0, .6);
+}
+.login label{
+	font-size: 16px;
+	color: #ccc;
+}
+.login input{
+	font-size: 22px !important;
+}
+.login button:hover{
+	padding: 0px 40px;
+}
+/* ============ FIM LOGIN CSS ==========*/
+
+
+
+/* ============ CADASTRAR CSS ==========*/
+
+
+body{
+	background: url(img/abst1.jpg);
+	background-size: cover;
+	color: #fff;
+}
+.cadastrar{
+	margin-top: 20px;
+}
+.cadastrar .card{
+	background: rgba(0, 0, 0, .6);
+}
+.cadastrar label{
+	font-size: 16px;
+	color: #ccc;
+}
+.cadastrar input{
+	font-size: 20px !important;
+}
+.cadastrar button:hover{
+	padding: 0px 40px;
+}
+
+/* ============ FIM CADASTRAR CSS ==========*/

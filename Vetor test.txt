@@ -1,0 +1,40 @@
+5;4;8;7;8;9;7;8;6;5;4;2;1;6;5;5;4;8;4;7
+
+B;MB;R;P;R;P;MB;MB;B;MB
+
+B;MB;R;MR;R;MR;MB;MB;B;MB
+
+    else {
+        //deixa todas os dados em letra maiuscula
+        for (var i = 0; i < vetor.length; i++) {
+            vetor[i] = vetor[i].toUpperCase();
+        }
+        //ordena o vetor de letras
+        vetor.sort();
+        //passagem de parametros executa a qualitativa
+        qualitativa(vetor,nomevar);
+    }
+
+
+
+        var posicao = totalV/2
+        //se o numero for par , ele compara se a posição achada o elemento é o mesmo da posição posterior
+        if (totalV % 2 == 0) {
+            if (vetor[posicao - 1] == vetor[posicao]) {
+                //se for igual ele já declara que aquela é a mediana
+             mediana = vetor[posicao];   
+            } else {
+                //se não for aqui ele mostra os 2 elementos como mediana 
+                mediana = vetor[posicao] + " e " + vetor[posicao - 1];
+            }
+        } 
+        else {
+            //se a posição for impar , ele da o numero da posição direto arredondando a posição com a função pronta math.round
+            mediana = vetor[Math.round(posicao)];
+        }
+
+
+					<div class="modal-body">
+  							<div class="form-group" align=center>
+              					<table class="table table-md table-striped table-bordered table-hover table-condensed" id="exibe"></table>
+            				</div>

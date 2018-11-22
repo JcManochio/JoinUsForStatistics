@@ -1,0 +1,94 @@
+
+/* ============== NAVEBAR CSS ==========*/
+nav .brand-logo{
+	padding-left: 10px;
+}
+
+/* ============== SLIDE CSS ==========*/
+
+#banner .slider{
+	height: 400px !important;
+} 
+
+#banner.slider .sliders{
+	height: 100% !important;
+}
+
+#banner .slider .indicators{
+	bottom: 60px;
+	z-index: 2;
+}
+
+#banner .slider .indicators .indicator-item.active{
+	background: #424242;
+}
+
+/* ============= PROJETO CSS==========*/
+	#projeto{
+		margin-bottom: 30px;
+		height: auto;
+		padding: 30px 0;
+	}
+
+
+
+/* ============= TEAM CSS==========*/
+#team{
+	background: rgba(0, 0, 0, .7);
+	color: #fff;
+}
+#team h2{
+	
+}
+#team h3{
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+#team span{margin-bottom: 40px;
+	font-weight: 300;
+	font-size: 14px;
+}
+#team .parallax-container{
+	height: auto;
+	padding: 50px 0;
+}
+/* ============= CONTATO CSS==========*/
+	#contato{
+		margin-bottom: 30px;
+		height: auto;
+		padding: 50px 0;
+	}
+/* ============= FOOTER CSS==========*/
+
+
+/* ============= BOTÃO ENTRAR / BOTÃO ENVIAR CSS==========*/
+li .waves-effect {
+
+	border-radius: 12px;
+
+	}
+/* ============= EFEITO HOVER MENU CSS==========*/
+
+
+
+/* ============= EXIBIR RESULTADOS MODAL CSS==========*/
+.modal { 
+	width: 100% !important ; 
+	height: 100% !important ;
+
+	padding-bottom: 0;
+}
+.modal-content{
+	height: 100% !important;
+	border-radius: 0;
+
+}
+.modal-action {
+	position:absolute;
+	top:20px;
+	right:10px;
+}
+
+/* ============= SELEC INPUT CSS==========*/
+
+
