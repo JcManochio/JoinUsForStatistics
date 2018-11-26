@@ -46,9 +46,9 @@
 
         <!-- ======================================== SECTION PÁGINA ============================== -->
       <section style="border:3px solid white;">
-        <div class="container" style="border: 2px solid white; padding: 30px; background-color: white">
+        <div class="container" style="border: 2px solid white; padding: 0px; background-color: white">
           <div class="row" id = "">
-            <h4>Entrada de Dados</h4><br>
+            <h4>Estatistica Descritiva</h4><br>
             <form class="col s6">
                   Qual o Tipo de Dado:
               <div class="container-fluid input-field col s12">
@@ -108,7 +108,7 @@
           <!-- ======================== BOTÃO GERAR RESULTADOS ============================= -->
             <div class="container center-align">
               <div class="row">
-                <button onclick="getRandomIntInclusive()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="tabel" id="btnCal">CALCULAR</button> 
+                <button onclick="getRandomIntInclusive()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="scrolltab" href="#scrolltab" id="btnCal">CALCULAR</button> 
               </div>
            </div>
   	    </div>
@@ -118,7 +118,7 @@
             <div class ="row">
                 <h4 class="center-align">Medidas de Tendência Central</h4><br>
               </div>
-          <div class="col s12 l4">
+          <div class="col s12 l4" id="teste688">
             <div class="card-panel center-align indigo darken-1">
                 <h5><span class="white-text">Média</span></h5>
               <h6><output type="text" class="white-text" id="x" >Resultado</output></h6>
@@ -148,6 +148,7 @@
               <h6><output type="text" class="black-text" id="cov" >Resultado</output></h6>
             </div>
           </div>
+          <a name="scrolltab"></a>  
           <div class= "col s12">
               <h4 class="center-align">Tabela</h4><br>
                <h6 id="saida"></h6>  
@@ -162,7 +163,7 @@
             <div class="col s12 l6">
               <div class="card-panel center-align indigo darken-1">
                 <h5><span class="white-text">Quartil</span></h5>
-                <h6><output type="text" class="white-text" id="q" >Resultado</output></h6>
+                <h6><output type="text" class="white-text" id="q" "center-align">Resultado</output></h6>
               </div>
             </div>
             <div class="col s12 l6">
@@ -247,7 +248,7 @@
 
         <!-- =========================== DISTRIBUÍÇÃO BINOMINAL ========================== -->
         <a name="scrollbinomial"></a>
-        <div style="height: 50px;" id="espbin"></div>
+        <div style="height: 100px;" id="espbin"></div>
         <section id="distBinominal">
           <div class="container" style="border: white 2px solid">
             <h4 class="center">Distribuíção Binominal</h4>
@@ -271,8 +272,6 @@
             <div class="row center">
               <button id="btncalcbin" onclick="ditribuicaobinomial()" class="btn waves-effect waves-default light-blue darken-3 modal-trigger" data-target="distbino">CALCULAR</button>
             </div>
-          </div>
-          <div class="row container" id="distbino">
             <div class="col s12 l6">
               <div class="card-panel center-align indigo darken-1">
                 <h5><span class="white-text" >Média</span></h5>
@@ -280,15 +279,15 @@
               </div>
             </div>
             <div class="col s12 l6">
-              <div class="card-panel center-align orange accent-3">
-                <h5><span class="black-text">Desvio Padrão</span></h5>
-                <h6><output type="text" id="desvio" class="black-text" >Resultado</output></h6>
+              <div class="card-panel center-align blue darken-2">
+                <h5><span class="white-text">Desvio Padrão</span></h5>
+                <h6><output type="text" id="desvio" class="white-text" >Resultado</output></h6>
               </div>
             </div>
             <div class="col s12 l6">
-              <div class="card-panel center-align blue darken-2">
-                <h5><span class="white-text">Coeficiente de variação</span></h5>
-                <h6><output type="text"class="white-text" id="cdv" >Resultado</output></h6>
+              <div class="card-panel center-align orange accent-3">
+                <h5><span class="black-text">Coeficiente de variação</span></h5>
+                <h6><output type="text"class="black-text" id="cdv" >Resultado</output></h6>
               </div>
             </div>
           <div class="col s12 l6">
@@ -356,15 +355,15 @@
               </div>
             </div>
           <div class="col s12 l6">
-            <div class="card-panel center-align orange accent-3">
-              <h5><span class="black-text">Desvio Padrão</span></h5>
-              <h6><output type="text" id="desviouni" class="black-text">Resultado</output></h6>
+            <div class="card-panel center-align blue darken-2">
+              <h5><span class="white-text">Desvio Padrão</span></h5>
+              <h6><output type="text" id="desviouni" class="white-text">Resultado</output></h6>
             </div>
           </div>
           <div class="col s12 l6">
-            <div class="card-panel center-align blue darken-2">
-              <h5><span class="white-text">Coeficiente de variação</span></h5>
-              <h6><output type="text" id="cdvuni" class="white-text">Resultado</output></h6>
+            <div class="card-panel center-align orange accent-3">
+              <h5><span class="black-text">Coeficiente de variação</span></h5>
+              <h6><output type="text" id="cdvuni" class="black-text">Resultado</output></h6>
             </div>
           </div>
           <div class="col s12 l6">
@@ -381,12 +380,12 @@
         
         <!-- =========================== CORRELAÇÃO E REGRESSÃO =========================== -->
         <a name="scrollcorrela" ></a>
-        <div style="height: 150px;" id="espcorre"></div>
+        <div style="height: 100px;" id="espcorre"></div>
         <section id="correlacao">
           <div class="container"  style="border:white 2px solid">
            <h4 class="center">Correlação/Regressão</h4>
               <div class="row">
-                <div class="input-field col s6 l6">
+                <div class="input-field col s6 l6">   
                   <input id="nomex" type="text" class="validate">
                   <label for="nomex">Informe o Nome da Varável Independente (X)</label>
                 </div>
@@ -409,25 +408,24 @@
               </div>
           </div>
         <div class="row container" id="tabel2">
-          <div class="col s12 l4">
+          <div class="col s12 l6">
             <div class="card-panel center-align indigo darken-1">
               <h5><span class="white-text" >Nível Correlação</span></h5>
               <h6><output type="text" id="força" class="white-text" >Resultado</output></h6>
             </div>
           </div>
-          <div class="col s12 l4">
-            <div class="card-panel center-align orange accent-3">
-              <h5><span class="black-text">Coeficiente Correlação</span></h5>
-              <h6><output type="text" id="corelaline" class="black-text">Resultado</output></h6>
-            </div>
-          </div>
-          <div class="col s12 l4">
+          <div class="col s12 l6">
             <div class="card-panel center-align blue darken-2">
               <h5><span class="white-text">Equação da Reta</span></h5>
               <h6><output type="text" id="equac" class="white-text" >Resultado</output></h6>
             </div>
           </div>
-          
+            <div class="col s12 l12">
+              <div class="card-panel center-align orange accent-3">
+                <h5><span class="black-text">Coeficiente Correlação</span></h5>
+                <h6><output type="text" id="corelaline" class="black-text">Resultado</output></h6>
+              </div>
+            </div>
           <div class= "col s12">
             <h6 id="#"></h6>  
           </div>
@@ -466,6 +464,7 @@
             <!--Gráfico-->
       <script src="js/Chart.min.js"></script>
       <script>
+        //Exibe/Esconde Ordenação da Qualitativa Ordinal
         $(document).ready(function() {
         $('#ocultaord').hide();
         $('#tipocalc').change(function() {
@@ -475,7 +474,10 @@
             $('#ocultaord').hide();
           }
         });
-        });
+      });
+      //fim Ordinal
+
+      //Exibe variavel Y da Distribuição Normal
      $(document).ready(function() {
          $('#oculnorm').hide();
          $('#calcnormal').change(function() {
@@ -485,7 +487,10 @@
                  $('#oculnorm').hide();
              }
          });
-     });
+     }); 
+     //fim Normal
+
+     //Exibe variavel Y da Distribuição Uniforme
      $(document).ready(function () {
          $('#oculuni').hide();
          $('#calcuni').change(function () {
@@ -496,31 +501,34 @@
              }
          });
      });
-                  var leitorDeCSV = new FileReader()
-            window.onload = function init() {
-                leitorDeCSV.onload = leCSV;
-             }
+     //Fim Uniforme
+     //Importa Arquivos
+    var leitorDeCSV = new FileReader()
+      window.onload = function init() {
+        leitorDeCSV.onload = leCSV;
+      }
 
-             function pegaCSV(inputFile) {
-                var file = inputFile.files[0];
-                leitorDeCSV.readAsText(file);
-            }
-            function leCSV(evt) {
-
-            var fileArr = evt.target.result.split('\n');
-            var strDiv = '';
-
-            for (var i=0; i<fileArr.length; i++) {
-                var fileLine = fileArr[i].split(',');
-                    for (var j=0; j<fileLine.length; j++) {
-                        strDiv += ''+fileLine[j].trim()+';';
-                }
-            }
-
-                var CSVsaida = document.getElementById('CSVsaida2');
-                CSVsaida.value = strDiv;
-                console.log(strDiv);
+function pegaCSV(inputFile) {
+    var file = inputFile.files[0];
+    leitorDeCSV.readAsText(file);
 }
+
+function leCSV(evt) {
+
+  var fileArr = evt.target.result.split('\n');
+  var strDiv = '';
+
+  for (var i=0; i<fileArr.length; i++) {
+    var fileLine = fileArr[i].split(',');
+      for (var j=0; j<fileLine.length; j++) {
+        strDiv += ''+fileLine[j].trim()+';';
+      }
+  }
+
+  var CSVsaida = document.getElementById('CSVsaida2');
+  CSVsaida.value = strDiv;
+  console.log(strDiv);
+}//Fim Importa Arquivos
       </script>
     </body>
   </html>

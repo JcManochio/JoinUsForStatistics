@@ -41,7 +41,7 @@ function getRandomIntInclusive(CSVsaida) {
     
     switch (tipocalc) {
         case "Qualitativa Nominal":
-            vetporc = porcentil();
+            vetporc = porcentilquali();
             qualiNom(vetletra, dig, quant);
             geratabledis(dig, fr, quant, nome);
             qualNom(vetletra, quant, dig);
@@ -50,7 +50,7 @@ function getRandomIntInclusive(CSVsaida) {
             break;
         case "Qualitativa Ordinal":
             $("#asda").show();
-            vetporc = porcentil();
+            vetporc = porcentilquali();
             qualiNom(vetletra, dig, quant);
             geratabledis(dig, fr, quant, nome);
             qualNom(vetletra, quant, dig);
@@ -69,7 +69,7 @@ function getRandomIntInclusive(CSVsaida) {
         case "Quantitativa Conti­nua":
             vetporc = porcentil();
             ordenanúmeros(vetorID)
-            quantCont(vetorID, nome, radio)
+            quantCont(vetorID, nome, radio, vetporc)
             break;
     }
 }
@@ -270,9 +270,9 @@ function calcMedSepnom(vetletra, vetporc, dig){
 }  
 
 //Recebe posições do porcentil
-function porcentil(){
-    var num2 = 0; 
-    num2 = (document.getElementById("percenter").value);
+function porcentilquali(){
+     
+    var num2 = (document.getElementById("percenter").value);
     vetporc = num2.split(";").map(Number);
     //ordena vetor de posições do porcentil
     for(var i=0; i<vetporc.length;i++){
@@ -432,6 +432,7 @@ function calcMedSepDisc(vetorID, vetporc, dig){
         posicao = (vetorID.length * porcentagem).toFixed(0);
         porcentil[i-1] = vetorID[posicao -1];
     }
+
     for(var i=0; i<vetporc.length; i++){
         aux2 = vetporc[i]
         vetporc2[i] = porcentil[aux2-1]
@@ -447,8 +448,7 @@ function calcMedSepDisc(vetorID, vetporc, dig){
 
 //Recebe posições do porcentil
 function porcentil(){
-    var num2 = 0; 
-    num2 = (document.getElementById("percenter").value);
+    var num2 = (document.getElementById("percenter").value);
     vetporc = num2.split(";").map(Number);
     //ordena vetor de posições do porcentil
     for(var i=0; i<vetporc.length;i++){
@@ -569,7 +569,7 @@ function desenhaGraficoDisc(dig, quant, grafico){
 //Fim Quantitativa Discreta
 
 //Inicio Qualitativa Continua
-function quantCont(vetorID, nome, radio) {
+function quantCont(vetorID, nome, radio, vetporc) {
     var mediaclass = [];
     var classnum = numeroDeClasses(vetorID);
     console.log("número de classes " + classnum)
@@ -996,22 +996,35 @@ function calcMedSepCont(numeroElementos, fi, limites, fAc, classint, vetporc){
 
         porcentil[i] = " " +(limInferior + ((posicao - fAnt)/fi[classe]) * classint).toFixed(2);
     }
-    for(var i=0; i<vetporc.length; i++){
-        aux2 = vetporc[i]
-        vetporc2[i] = " " + porcentil[aux2-1];
-    }    
-    console.log(aux2)
-    console.log(vetporc2)
+   
+    console.log("oqé " + aux2)
+    console.log("vetporc2 " + vetporc2)
     console.log(porcentil)
-    console.log(vetporc);
+    console.log("vetporc1 " + vetporc);
     
     //Quartil
     q[0] = porcentil[24];
     q[1] = " " + porcentil[49];
     q[2] = " " + porcentil[74];
     q[3] = " " + porcentil[99];
+    var qt = "<table class= 'centered'>" + 
+                    "<thead>" + 
+                        "<tr>" +
+                            "<th>  Q1 </th>" + 
+                            "<th>  Q2 </th>" +
+                            "<th>  Q3 </th>" +
+                            "<th>  Q4 </th>" +
+                        "</tr>" +
+                    "</thead>";
+		for(i=0;i<q.length;i++){
+        	qt = qt + "<tbody>" +
+                             
+                                "<td>" + q[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
     console.log("teste Q 0" + q)
-    document.getElementById("q").innerHTML = q;
+    document.getElementById("q").innerHTML = qt;
     
     //Quintil
     k[0] = porcentil[19];
@@ -1019,7 +1032,25 @@ function calcMedSepCont(numeroElementos, fi, limites, fAc, classint, vetporc){
     k[2] = " " + porcentil[59];
     k[3] = " " + porcentil[79];
     k[4] = " " + porcentil[99];
-    document.getElementById("k").innerHTML = k;
+
+    var kt = "<table class= 'centered'>" + 
+                    "<thead>" + 
+                        "<tr>" +
+                            "<th>  K1 </th>" + 
+                            "<th>  K2 </th>" +
+                            "<th>  K3 </th>" +
+                            "<th>  K4 </th>" +
+                            "<th>  K5 </th>" +
+                        "</tr>" +
+                    "</thead>";
+		for(i=0;i<k.length;i++){
+        	kt = kt + "<tbody>" +
+                             
+                                "<td>" + k[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
+    document.getElementById("k").innerHTML = kt;
 
     //Decil
     decil[0] = porcentil[9];
@@ -1032,16 +1063,41 @@ function calcMedSepCont(numeroElementos, fi, limites, fAc, classint, vetporc){
     decil[7] = " " + porcentil[79];
     decil[8] = " " + porcentil[89];
     decil[9] = " " + porcentil[99];
+    
+    var D=[];
+    
+    for(i=1;i<=10;i++){
+      D[i] = "D" + i;   
+    }
+     var dl = "<table class= 'centered'>" + "<thead>";
+     for(i=1;i<=10;i++){
+            dl = dl +    
+                            "<th>" + D[i] + "</th>";
+                                      
+     }
+     dl = dl + "</thead>";
+		for(i=0;i<decil.length;i++){
+        	dl = dl + "<tbody>" +
+                             
+                                "<td>" + decil[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
 
-    document.getElementById("decil").innerHTML = decil;
+    document.getElementById("decil").innerHTML = dl;
     //fim decil
-
+    if(vetporc != 0){
+        for(var i=0; i<vetporc.length; i++){
+        aux2 = vetporc[i]
+        vetporc2[i] = " " + porcentil[aux2-1];
+        }    
+    }
     if(vetporc2 != ""){
     document.getElementById("porcentil").innerHTML = vetporc2;
     //fim porcentil
-    }else
+    }else{
         document.getElementById("porcentil").innerHTML = "Você não escolheu uma posição!"
-
+    }
 }
 //Fim Continua
 
