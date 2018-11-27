@@ -225,32 +225,89 @@ function calcMedSepnom(vetletra, vetporc, dig){
     var q = []; var k = []; var decil = []; var porcentil = [];
 
     //Quartil
-    for(var i = 1; i <= 4; i++){
-        porcentagem = 0.25 * i;
-        posicao = (vetletra.length * porcentagem).toFixed(0);
-        q[i-1] = vetletra[posicao -1];
-    }
-    document.getElementById("q").innerHTML = q;     
-    md = q[1]
-    document.getElementById("md").innerHTML = md;
+    q[0] = porcentil[24];
+    q[1] = " " + porcentil[49];
+    q[2] = " " + porcentil[74];
+    q[3] = " " + porcentil[99];
+    md = q[1];
+    var qt = "<table class= 'centered'>" + 
+                    "<thead>" + 
+                        "<tr>" +
+                            "<th>  Q1 </th>" + 
+                            "<th>  Q2 </th>" +
+                            "<th>  Q3 </th>" +
+                            "<th>  Q4 </th>" +
+                        "</tr>" +
+                    "</thead>";
+		for(i=0;i<q.length;i++){
+        	qt = qt + "<tbody>" +
+                             
+                                "<td>" + q[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
+    console.log("teste Q 0" + q)
+    document.getElementById("q").innerHTML = qt;
+    
+    //Quintil
+    k[0] = porcentil[19];
+    k[1] = " " + porcentil[39];
+    k[2] = " " + porcentil[59];
+    k[3] = " " + porcentil[79];
+    k[4] = " " + porcentil[99];
 
-     //Kintil
-     for(var i = 1; i <= 5; i++){
-        porcentagem = 0.2 * i;
-        posicao = (vetletra.length * porcentagem).toFixed(0);
-        k[i-1] = vetletra[posicao -1];
-    }
-    document.getElementById("k").innerHTML = k;    
+    var kt = "<table class= 'centered'>" + 
+                    "<thead>" + 
+                        "<tr>" +
+                            "<th>  K1 </th>" + 
+                            "<th>  K2 </th>" +
+                            "<th>  K3 </th>" +
+                            "<th>  K4 </th>" +
+                            "<th>  K5 </th>" +
+                        "</tr>" +
+                    "</thead>";
+		for(i=0;i<k.length;i++){
+        	kt = kt + "<tbody>" +
+                             
+                                "<td>" + k[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
+    document.getElementById("k").innerHTML = kt;
 
-     //Decil
-     for(var i = 1; i <= 10; i++){
-        porcentagem = 0.1 * i;
-        posicao = (vetletra.length * porcentagem).toFixed(0);
-        decil[i-1] = vetletra[posicao -1];
+    //Decil
+    decil[0] = porcentil[9];
+    decil[1] = " " + porcentil[19];
+    decil[2] = " " + porcentil[29];
+    decil[3] = " " + porcentil[39];
+    decil[4] = " " + porcentil[49];
+    decil[5] = " " + porcentil[59];
+    decil[6] = " " + porcentil[69];
+    decil[7] = " " + porcentil[79];
+    decil[8] = " " + porcentil[89];
+    decil[9] = " " + porcentil[99];
+    
+    var D=[];
+    
+    for(i=1;i<=10;i++){
+      D[i] = "D" + i;   
     }
-    document.getElementById("decil").innerHTML = decil;    
-    //fim decil
+     var dl = "<table class= 'centered'>" + "<thead>";
+     for(i=1;i<=10;i++){
+            dl = dl +    
+                            "<th>" + D[i] + "</th>";
+                                      
+     }
+     dl = dl + "</thead>";
+		for(i=0;i<decil.length;i++){
+        	dl = dl + "<tbody>" +
+                             
+                                "<td>" + decil[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
 
+    document.getElementById("decil").innerHTML = dl;
      //Porcentil
     for(var i = 1; i <= 100; i++){
         porcentagem = 0.01 * i;
@@ -401,37 +458,97 @@ function calcMedSepDisc(vetorID, vetporc, dig){
     var aux2 = 0; var vetporc2 = [];
     var q = []; var k = []; var decil = []; var porcentil = [];
 
-    //Quartil
-    for(var i = 1; i <= 4; i++){
-        porcentagem = 0.25 * i;
-        posicao = (vetorID.length * porcentagem).toFixed(0);
-        q[i-1] = vetorID[posicao -1];
-    }
-    document.getElementById("q").innerHTML = q;    
-
-     //Kintil
-     for(var i = 1; i <= 5; i++){
-        porcentagem = 0.2 * i;
-        posicao = (vetorID.length * porcentagem).toFixed(0);
-        k[i-1] = vetorID[posicao -1];
-    }
-    document.getElementById("k").innerHTML = k;    
-
-     //Decil
-     for(var i = 1; i <= 10; i++){
-        porcentagem = 0.1 * i;
-        posicao = (vetorID.length * porcentagem).toFixed(0);
-        decil[i-1] = vetorID[posicao -1];
-    }
-    document.getElementById("decil").innerHTML = decil;    
-    //fim decil
-
-     //Porcentil
-    for(var i = 1; i <= 100; i++){
+      //Porcentil
+      for(var i = 1; i <= 100; i++){
         porcentagem = 0.01 * i;
         posicao = (vetorID.length * porcentagem).toFixed(0);
         porcentil[i-1] = vetorID[posicao -1];
     }
+    
+    //Quartil
+    q[0] = porcentil[24];
+    q[1] = " " + porcentil[49];
+    q[2] = " " + porcentil[74];
+    q[3] = " " + porcentil[99];
+    md = q[1];
+    var qt = "<table class= 'centered'>" + 
+                    "<thead>" + 
+                        "<tr>" +
+                            "<th>  Q1 </th>" + 
+                            "<th>  Q2 </th>" +
+                            "<th>  Q3 </th>" +
+                            "<th>  Q4 </th>" +
+                        "</tr>" +
+                    "</thead>";
+		for(i=0;i<q.length;i++){
+        	qt = qt + "<tbody>" +
+                             
+                                "<td>" + q[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
+    console.log("teste Q 0" + q)
+    document.getElementById("q").innerHTML = qt;
+    
+    //Quintil
+    k[0] = porcentil[19];
+    k[1] = " " + porcentil[39];
+    k[2] = " " + porcentil[59];
+    k[3] = " " + porcentil[79];
+    k[4] = " " + porcentil[99];
+
+    var kt = "<table class= 'centered'>" + 
+                    "<thead>" + 
+                        "<tr>" +
+                            "<th>  K1 </th>" + 
+                            "<th>  K2 </th>" +
+                            "<th>  K3 </th>" +
+                            "<th>  K4 </th>" +
+                            "<th>  K5 </th>" +
+                        "</tr>" +
+                    "</thead>";
+		for(i=0;i<k.length;i++){
+        	kt = kt + "<tbody>" +
+                             
+                                "<td>" + k[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
+    document.getElementById("k").innerHTML = kt;
+
+    //Decil
+    decil[0] = porcentil[9];
+    decil[1] = " " + porcentil[19];
+    decil[2] = " " + porcentil[29];
+    decil[3] = " " + porcentil[39];
+    decil[4] = " " + porcentil[49];
+    decil[5] = " " + porcentil[59];
+    decil[6] = " " + porcentil[69];
+    decil[7] = " " + porcentil[79];
+    decil[8] = " " + porcentil[89];
+    decil[9] = " " + porcentil[99];
+    
+    var D=[];
+    
+    for(i=1;i<=10;i++){
+      D[i] = "D" + i;   
+    }
+     var dl = "<table class= 'centered'>" + "<thead>";
+     for(i=1;i<=10;i++){
+            dl = dl +    
+                            "<th>" + D[i] + "</th>";
+                                      
+     }
+     dl = dl + "</thead>";
+		for(i=0;i<decil.length;i++){
+        	dl = dl + "<tbody>" +
+                             
+                                "<td>" + decil[i]  + "</td>" + 
+                            
+                        "</tbody";  
+	}
+
+    document.getElementById("decil").innerHTML = dl;
 
     for(var i=0; i<vetporc.length; i++){
         aux2 = vetporc[i]
