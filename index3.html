@@ -72,12 +72,19 @@
               <input id="nome" type="text">
               <label for="nome">Qual Nome da Variável Pesquisada?</label>
             </div>
-            <div id="CSVsaida"class=" file-field input-field col s12 l12">
-              <input type="file" id="inputCSV" style="border-bottom: none;" >
-                <i class="material-icons prefix">cloud_upload</i><a href=""></a>
-              <input type = "file" onchange="pegaCSV(this)"/>
-                <input id="CSVsaida2" type="text">
-                <label for="CSVsaida2">Informe os Dados:</label>
+            
+                
+              
+              <div class=" file-field input-field>
+                  <input type="file" id="inputCSV" style="border-bottom: none;" >
+                  <i class="material-icons prefix">cloud_upload</i><a href=""></a>
+                <input type = "file" onchange="pegaCSV(this)"/>
+                <div id="CSVsaida" class=" input-field col s12 l12">
+                    <label for="CSVsaida2">Informe os Dados:</label>
+                    <input id="CSVsaida2" type="text">
+              </div>
+        
+                
             </div>
           </div>
             <div class="row">
@@ -104,7 +111,7 @@
                   <label for="percenter">Digite até 10 posições para porcentil</label>
                 </div>
             </div>
-            <br><br><br>
+            <br>
           <!-- ======================== BOTÃO GERAR RESULTADOS ============================= -->
             <div class="container center-align">
               <div class="row">

@@ -530,23 +530,43 @@ function calcMedSepDisc(vetorID, vetporc, dig){
     
     var D=[];
     
-    for(i=1;i<=10;i++){
+    for(i=1;i<=5;i++){
       D[i] = "D" + i;   
     }
      var dl = "<table class= 'centered'>" + "<thead>";
-     for(i=1;i<=10;i++){
+     for(i=1;i<=5;i++){
             dl = dl +    
                             "<th>" + D[i] + "</th>";
                                       
      }
      dl = dl + "</thead>";
-		for(i=0;i<decil.length;i++){
+		for(i=0;i<5;i++){
         	dl = dl + "<tbody>" +
                              
                                 "<td>" + decil[i]  + "</td>" + 
                             
-                        "</tbody";  
-	}
+                        "</tbody" ;  
+    }
+
+    dl = dl + "<br>" + "<thead>"
+    for(i=5;i<=10;i++){
+        D[i] = "D" + i;   
+      }
+
+       for(i=6;i<=10;i++){
+              dl = dl +    
+                              "<th>" + D[i] + "</th>";
+                                        
+       }
+       dl = dl + "</thead>" + "<br>";
+       
+          for(i=5;i<=9;i++){
+              dl = dl + "<tbody>" +
+                               
+                                  "<td>" + decil[i]  + "</td>" + 
+                              
+                          "</tbody";  
+      }
 
     document.getElementById("decil").innerHTML = dl;
 
@@ -554,10 +574,32 @@ function calcMedSepDisc(vetorID, vetporc, dig){
         aux2 = vetporc[i]
         vetporc2[i] = porcentil[aux2-1]
     }    
+    var P = [];
+
+    for(i=1;i<=100;i++){
+        P[i] = "P" + i;   
+      }
+      console.log(P);
+       var pt = "<table class= 'centered'>" + "<thead>";
+       for(i=0;i<=vetporc.length-1;i++){
+              pt = pt +    
+                              "<th>" + P[vetporc[i]] + "</th>";
+                                        
+       }
+       console.log("test Pt1 " + pt)
+       pt = pt + "</thead>";
+          for(i=0;i<vetporc.length;i++){
+              pt = pt + "<tbody>" +
+                               
+                                  "<td>" + vetporc2[i]  + "</td>" + 
+                              
+                          "</tbody";  
+      }
+      console.log("test pt2 " + pt)
     console.log(porcentil)
     console.log(vetporc);
-    if(vetporc2 != ""){
-    document.getElementById("porcentil").innerHTML = vetporc2;
+    if(pt = undefined){
+    document.getElementById("porcentil").innerHTML = pt;
     //fim porcentil
     }else
         document.getElementById("porcentil").innerHTML = "Você não escolheu uma posição!"
